@@ -76,7 +76,7 @@ class posenet_learn(object):
                 self.weights2[2] += self.learning_rate * error * self.brazoDch
                 self.weights2[3] += self.learning_rate * error * self.piernaIzq
                 self.weights2[4] += self.learning_rate * error * self.piernaDch
-                self.weights[20] += self.learning_rate * error * self.Bias
+                self.weights2[10] += self.learning_rate * error * self.Bias
                 error_cabeza = error * self.weights2[0] * self.cabeza * (1 - self.cabeza)
                 self.weights[0][0] += self.learning_rate * error_cabeza * self.X[j][0][0]
                 self.weights[0][1] += self.learning_rate * error_cabeza * self.X[j][0][1]
