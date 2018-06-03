@@ -13,7 +13,7 @@ class posenet_learn(object):
         self.X = self.train(buffer)
         self.weights2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         self.weights = 2 * np.random.random((21, 2)) - 1
-        self.weights2 = 2 * np.random.random((10, 1)) - 1
+        self.weights2 = 2 * np.random.random((11, 1)) - 1
         self.Bias = 1
 
     # Metodo que recorre la red neuronal y devuelve su resultado
@@ -41,8 +41,7 @@ class posenet_learn(object):
             self.weights2[9] * self.Bias)
         salida = self.sigmoide(
             self.cabeza * self.weights2[0] + self.brazoIzq * self.weights2[1] + self.brazoDch * self.weights2[
-                2] + self.piernaIzq * self.weights2[3] + self.piernaDch * self.weights2[4] + self.weights2[
-                10] * self.Bias)
+                2] + self.piernaIzq * self.weights2[3] + self.piernaDch * self.weights2[4] + self.weights2[10] * self.Bias)
         return salida
 
     # Funcion de activacion sigmoide
