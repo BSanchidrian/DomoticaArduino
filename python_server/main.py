@@ -77,6 +77,6 @@ if __name__ == '__main__':
     websocket_server.serveforever()
     while True:
         text = input("prompt")
-        if text == 'y':
+        if text == "y":
             print('Entrenando :D')
             entrenar = True
