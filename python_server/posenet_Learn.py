@@ -11,10 +11,8 @@ class posenet_learn(object):
         self.learning_rate = learning_rate
         self.y = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
         self.X = self.train(buffer)
-        self.weights1 = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0],
-                         [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]  # 0-16 1capa, 17-21 2capa, 22-27 bias
         self.weights2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        self.weights1 = 2 * np.random.random((21, 2)) - 1
+        self.weights = 2 * np.random.random((21, 2)) - 1
         self.weights2 = 2 * np.random.random((10, 1)) - 1
         self.Bias = 1
 
