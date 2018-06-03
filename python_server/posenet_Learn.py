@@ -1,4 +1,5 @@
 import numpy as np
+import json
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 import tensorflow as tf
@@ -148,7 +149,8 @@ class posenet_learn(object):
     def train(self, buffer):
         positions = []
         for entry in buffer:
-            for part in entry:
+            json = json.loads(entry)
+            for part in json:
                 print(part)
                 positions.append(part["position"])
         print(positions)
