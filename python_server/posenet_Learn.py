@@ -147,10 +147,14 @@ class posenet_learn(object):
         return '1' if (feed >= 0.5) else '0'  # Redondeamos los datos para mostrarlos en pantalla
 
     def train(self, buffer):
+        parts = []
         positions = []
         for entry in buffer:
-            json = json.loads(entry)
-            for part in json:
-                print(part)
-                positions.append(part["position"])
-        print(positions)
+            positions.clear()
+            object = json.loads(entry)
+            for part in object:
+                position = [part["position"]["x"], part["position"]["y"]]
+                positions.append(position)
+            parts.append(positions)
+
+        print(parts)
