@@ -144,7 +144,7 @@ class posenet_learn(object):
                 resultado = self.errorAlcanzado(yAux[k], k)
                 if resultado == False: break
             errorAlcanzado = resultado
-            if i >= 100000:
+            if i >= 1000:
                 errorAlcanzado = True  # En el caso de que se hagan 100000 iteraciones se cierra el bucle
             # print("Iteraciones: %d" % i)
         print(self.weights)
@@ -153,12 +153,12 @@ class posenet_learn(object):
         self.Backpropagation()
 
         w1 = open('weights1.txt', 'w')
-        for i in len(self.weights):
+        for i in range(len(self.weights)):
             w1.write("%s\t" % self.weights[i][0])
             w1.write("%s\n" % self.weights[i][1])
 
         w1 = open('weights2.txt', 'w')
-        for i in len(self.weights2):
+        for i in range(len(self.weights2)):
             w1.write("%s\n" % self.weights2[i])
 
     def predict(self, x):
