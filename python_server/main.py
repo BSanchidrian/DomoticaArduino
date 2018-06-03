@@ -1,4 +1,5 @@
 import socket
+from threading import Thread
 from SimpleWebSocketServer import SimpleWebSocketServer, WebSocket
 from posenet_Learn import posenet_learn
 
@@ -68,16 +69,20 @@ class Client(object):
 #         self.connection, self.address = self.socket.accept()
 #         return self.connection
 
-
-
-if __name__ == '__main__':
-    # IP de la placa..
-    # node_mcu = Client('192.168.1.114', 8080)
-    websocket_server = SimpleWebSocketServer('', 25000, Server)
-    websocket_server.serveforever()
+def get_input():
     while True:
         text = input("prompt")
         print(text)
         if text == "y":
             print('Entrenando :D')
+            global entrenar
             entrenar = True
+
+
+if __name__ == '__main__':
+    # IP de la placa..
+    # node_mcu = Client('192.168.1.114', 8080)
+    thread = Thread(target=get_input)
+    thread.start()
+    websocket_server = SimpleWebSocketServer('', 25000, Server)
+    websocket_server.serveforever()
