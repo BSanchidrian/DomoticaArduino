@@ -78,4 +78,5 @@ if __name__ == '__main__':
     while True:
         text = input("prompt")
         if text == 'y':
+            print('Entrenando :D')
             entrenar = True
