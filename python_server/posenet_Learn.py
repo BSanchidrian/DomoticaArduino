@@ -149,5 +149,6 @@ class posenet_learn(object):
         positions = []
         for entry in buffer:
             for part in entry:
+                print(part)
                 positions.append(part["position"])
         print(positions)
