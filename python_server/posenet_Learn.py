@@ -65,7 +65,7 @@ class posenet_learn(object):
         i = 0  # Contador de iteraciones para evitar bucles infinitos
         yAux = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # Vector auxiliar que almacena los resultados obtenidos de y en una iteracion del bucle
         errorAlcanzado = False  # bool que nos indica si se han alcanzado los margenes de error
-        while errorAlcanzado == False:
+        while not errorAlcanzado:
             for j in range(len(self.X)):
                 i += 1
                 yHat = self.feedFordward(self.X[j])
@@ -128,6 +128,7 @@ class posenet_learn(object):
             errorAlcanzado = resultado
             if i == 10000: errorAlcanzado = True  # En el caso de que se hagan 100000 iteraciones se cierra el bucle
             print("Iteraciones: %d" % i)
+            break
         print(self.weights)
 
     def fit(self):
