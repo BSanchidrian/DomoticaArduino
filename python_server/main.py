@@ -17,9 +17,10 @@ class Server(WebSocket):
             buffer.append(self.data)
 
         if entrenar and len(buffer) == 10:
-            # pasar el buffer a la red
             print("Entrenando xd")
-            print(buffer)
+            # print(buffer)
+            red = posenet_learn()
+            red.train(buffer)
             entrenar = False
             buffer.clear()
 
