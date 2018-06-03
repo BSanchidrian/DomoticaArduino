@@ -14,7 +14,7 @@ class Server(WebSocket):
 
         global entrenar
         if entrenar and len(buffer) < 10:
-            buffer.append(self.data['position'])
+            buffer.append(self.data)
 
         if entrenar and len(buffer) == 10:
             # pasar el buffer a la red

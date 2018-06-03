@@ -144,3 +144,10 @@ class posenet_learn(object):
         feed = self.feedFordward(x)
         print(feed)
         return '1' if (feed >= 0.5) else '0'  # Redondeamos los datos para mostrarlos en pantalla
+
+    def train(self, buffer):
+        positions = []
+        for entry in buffer:
+            positions.append(entry["position"])
+
+        print(positions)
