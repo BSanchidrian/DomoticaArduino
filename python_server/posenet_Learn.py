@@ -148,6 +148,6 @@ class posenet_learn(object):
     def train(self, buffer):
         positions = []
         for entry in buffer:
+            print(entry)
             positions.append(entry["position"])
-
         print(positions)
