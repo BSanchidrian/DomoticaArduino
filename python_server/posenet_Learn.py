@@ -9,7 +9,10 @@ import tensorflow as tf
 class posenet_learn(object):
     def __init__(self, buffer, learning_rate=0.2):
         self.learning_rate = learning_rate
-        self.y = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+
+        self.y = []
+        for i in range(len(buffer)):
+            self.y.append(1)
         self.X = self.train(buffer)
 
         self.weights = 2 * np.random.random((17, 2)) - 1
@@ -81,7 +84,11 @@ class posenet_learn(object):
     # Metodo para actualizar los valores ed los pesos
     def Backpropagation(self):
         i = 0  # Contador de iteraciones para evitar bucles infinitos
-        yAux = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # Vector auxiliar que almacena los resultados obtenidos de y en una iteracion del bucle
+
+        yAux = []
+        for i in range(len(self.X)):
+            yAux.append(1)
+        #yAux = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # Vector auxiliar que almacena los resultados obtenidos de y en una iteracion del bucle
         errorAlcanzado = False  # bool que nos indica si se han alcanzado los margenes de error
         while not errorAlcanzado:
             for j in range(len(self.X)):
