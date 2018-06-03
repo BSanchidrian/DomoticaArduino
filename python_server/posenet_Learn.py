@@ -159,10 +159,10 @@ class posenet_learn(object):
 
         w1 = open('weights2.txt', 'w')
         for i in range(len(self.weights2)):
-            w1.write("%s\n" % self.weights2[i])
+            w1.write("%s\n" % self.weights2[i][0])
 
-    def predict(self, x):
-        feed = self.feedFordward(x)
+    def predict(self):
+        feed = self.feedFordward(self.X[0])
         print(feed)
         return '1' if (feed >= 0.5) else '0'  # Redondeamos los datos para mostrarlos en pantalla
 
