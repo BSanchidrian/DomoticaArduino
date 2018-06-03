@@ -1,13 +1,15 @@
 import numpy as np
 import json
 import os
-os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import tensorflow as tf
+
 
 class posenet_learn(object):
     def __init__(self, buffer, learning_rate=0.2):
         self.learning_rate = learning_rate
-        self.y = [1,1,1,1,1,1,1,1,1,1]
+        self.y = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
         self.X = self.train(buffer)
         self.weights1 = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0],
                          [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]  # 0-16 1ªcapa, 17-21 2ªcapa, 22-27 bias
@@ -64,7 +66,7 @@ class posenet_learn(object):
     # Metodo para actualizar los valores ed los pesos
     def Backpropagation(self):
         i = 0  # Contador de iteraciones para evitar bucles infinitos
-        yAux = [0, 0, 0, 0]  # Vector auxiliar que almacena los resultados obtenidos de y en una iteracion del bucle
+        yAux = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # Vector auxiliar que almacena los resultados obtenidos de y en una iteracion del bucle
         errorAlcanzado = False  # bool que nos indica si se han alcanzado los margenes de error
         while errorAlcanzado == False:
             for j in range(len(self.X)):
@@ -128,7 +130,7 @@ class posenet_learn(object):
                 if resultado == False: break
             errorAlcanzado = resultado
             if i == 100000: errorAlcanzado = True  # En el caso de que se hagan 100000 iteraciones se cierra el bucle
-            print("Iteraciones: %d"%i)
+            print("Iteraciones: %d" % i)
         print(self.weights1)
 
     def fit(self):
