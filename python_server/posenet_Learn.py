@@ -5,18 +5,10 @@ os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 import tensorflow as tf
 
 class posenet_learn(object):
-    def __init__(self, learning_rate=0.2):
+    def __init__(self, buffer, learning_rate=0.2):
         self.learning_rate = learning_rate
-        self.y = [0, 1, 1, 0]
-        a0 = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0],
-              [0, 0], [0, 0], [0, 0], [0, 0]]
-        a1 = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0],
-              [0, 0], [0, 0], [0, 0], [0, 0]]
-        a2 = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0],
-              [0, 0], [0, 0], [0, 0], [0, 0]]
-        a3 = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0],
-              [0, 0], [0, 0], [0, 0], [0, 0]]
-        self.X = [a0, a1, a2, a3]
+        self.y = [1,1,1,1,1,1,1,1,1,1]
+        self.X = self.train(buffer)
         self.weights1 = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0],
                          [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]  # 0-16 1ªcapa, 17-21 2ªcapa, 22-27 bias
         self.weights2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -136,7 +128,8 @@ class posenet_learn(object):
                 if resultado == False: break
             errorAlcanzado = resultado
             if i == 100000: errorAlcanzado = True  # En el caso de que se hagan 100000 iteraciones se cierra el bucle
-            # print("Iteraciones: %d"%i)
+            print("Iteraciones: %d"%i)
+        print(self.weights1)
 
     def fit(self):
         self.Backpropagation()
@@ -156,5 +149,4 @@ class posenet_learn(object):
                 position = [part["position"]["x"], part["position"]["y"]]
                 positions.append(position)
             parts.append(positions)
-
-        print(parts)
+        return parts
