@@ -126,7 +126,7 @@ class posenet_learn(object):
                 resultado = self.errorAlcanzado(yAux[k], k)
                 if resultado == False: break
             errorAlcanzado = resultado
-            if i == 100000: errorAlcanzado = True  # En el caso de que se hagan 100000 iteraciones se cierra el bucle
+            if i == 10000: errorAlcanzado = True  # En el caso de que se hagan 100000 iteraciones se cierra el bucle
             print("Iteraciones: %d" % i)
         print(self.weights)
 
