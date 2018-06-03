@@ -128,7 +128,7 @@ class posenet_learn(object):
             errorAlcanzado = resultado
             if i >= 100000:
                 errorAlcanzado = True  # En el caso de que se hagan 100000 iteraciones se cierra el bucle
-            print("Iteraciones: %d" % i)
+            # print("Iteraciones: %d" % i)
         print(self.weights)
 
     def fit(self):
