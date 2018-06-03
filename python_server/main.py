@@ -20,6 +20,7 @@ class Server(WebSocket):
             print("Entrenando xd")
             # print(buffer)
             red = posenet_learn(buffer)
+            red.fit(buffer)
             print(red.predict())
             entrenar = False
             buffer.clear()
