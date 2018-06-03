@@ -13,14 +13,14 @@ class Server(WebSocket):
         self.sendMessage('OK')  # para mantener la conexion con la web abierta hay que mandar paquetes cada x tiempo
 
         global entrenar
-        if entrenar and len(buffer) < 100:
+        if entrenar and len(buffer) < 1000:
             buffer.append(self.data)
 
-        if entrenar and len(buffer) == 100:
+        if entrenar and len(buffer) == 1000:
             print("Entrenando xd")
             # print(buffer)
             red = posenet_learn(buffer)
-            # red.fit()
+            red.fit()
             print(red.predict())
             entrenar = False
             buffer.clear()
