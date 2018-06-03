@@ -11,9 +11,27 @@ class posenet_learn(object):
         self.learning_rate = learning_rate
         self.y = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
         self.X = self.train(buffer)
-        self.weights2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
         self.weights = 2 * np.random.random((17, 2)) - 1
         self.weights2 = 2 * np.random.random((11, 1)) - 1
+
+        if os.path.isfile('weigths1.txt'):
+            file = open("weigths1.txt", "r")
+            i = 0
+            for line in file.readlines():
+                position = line.strip().split("\t")
+                self.weights[i][0] = float(position[0])
+                self.weights[i][1] = float(position[1])
+                i += 1
+
+        if os.path.isfile('weigths2.txt'):
+            file = open("weigths2.txt", "r")
+            i = 0
+            for line in file.readlines():
+                position = line.strip()
+                self.weights2[i] = float(position)
+                i += 1
+
         self.Bias = 1
 
     # Metodo que recorre la red neuronal y devuelve su resultado
@@ -133,6 +151,15 @@ class posenet_learn(object):
 
     def fit(self):
         self.Backpropagation()
+
+        w1 = open('weights1.txt', 'w')
+        for i in len(self.weights):
+            w1.write("%s\t" % self.weights[i][0])
+            w1.write("%s\n" % self.weights[i][1])
+
+        w1 = open('weights2.txt', 'w')
+        for i in len(self.weights2):
+            w1.write("%s\n" % self.weights2[i])
 
     def predict(self, x):
         feed = self.feedFordward(x)
