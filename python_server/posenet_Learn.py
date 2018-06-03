@@ -12,7 +12,7 @@ class posenet_learn(object):
         self.y = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
         self.X = self.train(buffer)
         self.weights2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        self.weights = 2 * np.random.random((21, 2)) - 1
+        self.weights = 2 * np.random.random((17, 2)) - 1
         self.weights2 = 2 * np.random.random((11, 1)) - 1
         self.Bias = 1
 
@@ -77,7 +77,7 @@ class posenet_learn(object):
                 self.weights2[3] += self.learning_rate * error * self.piernaIzq
                 self.weights2[4] += self.learning_rate * error * self.piernaDch
                 self.weights[20] += self.learning_rate * error * self.Bias
-                error_cabeza = error * self.weights[17] * self.cabeza * (1 - self.cabeza)
+                error_cabeza = error * self.weights2[0] * self.cabeza * (1 - self.cabeza)
                 self.weights[0][0] += self.learning_rate * error_cabeza * self.X[j][0][0]
                 self.weights[0][1] += self.learning_rate * error_cabeza * self.X[j][0][1]
                 self.weights[1][0] += self.learning_rate * error_cabeza * self.X[j][1][0]
@@ -89,7 +89,7 @@ class posenet_learn(object):
                 self.weights[4][0] += self.learning_rate * error_cabeza * self.X[j][4][0]
                 self.weights[4][1] += self.learning_rate * error_cabeza * self.X[j][4][1]
                 self.weights2[5] += self.learning_rate * error_cabeza * self.Bias
-                error_brazoIzq = error * self.weights[18] * self.brazoIzq * (1 - self.brazoIzq)
+                error_brazoIzq = error * self.weights2[1] * self.brazoIzq * (1 - self.brazoIzq)
                 self.weights[5][0] += self.learning_rate * error_brazoIzq * self.X[j][5][0]
                 self.weights[5][1] += self.learning_rate * error_brazoIzq * self.X[j][5][1]
                 self.weights[7][0] += self.learning_rate * error_brazoIzq * self.X[j][7][0]
@@ -97,7 +97,7 @@ class posenet_learn(object):
                 self.weights[9][0] += self.learning_rate * error_brazoIzq * self.X[j][9][0]
                 self.weights[9][1] += self.learning_rate * error_brazoIzq * self.X[j][9][1]
                 self.weights2[6] += self.learning_rate * error_brazoIzq * self.Bias
-                error_brazoDch = error * self.weights[19] * self.brazoDch * (1 - self.brazoDch)
+                error_brazoDch = error * self.weights2[2] * self.brazoDch * (1 - self.brazoDch)
                 self.weights[6][0] += self.learning_rate * error_brazoDch * self.X[j][6][0]
                 self.weights[6][1] += self.learning_rate * error_brazoDch * self.X[j][6][1]
                 self.weights[8][0] += self.learning_rate * error_brazoDch * self.X[j][8][0]
@@ -105,7 +105,7 @@ class posenet_learn(object):
                 self.weights[10][0] += self.learning_rate * error_brazoDch * self.X[j][10][0]
                 self.weights[10][1] += self.learning_rate * error_brazoDch * self.X[j][10][1]
                 self.weights2[7] += self.learning_rate * error_brazoDch * self.Bias
-                error_piernaIzq = error * self.weights[20] * self.piernaIzq * (1 - self.piernaIzq)
+                error_piernaIzq = error * self.weights2[3] * self.piernaIzq * (1 - self.piernaIzq)
                 self.weights[11][0] += self.learning_rate * error_piernaIzq * self.X[j][11][0]
                 self.weights[11][1] += self.learning_rate * error_piernaIzq * self.X[j][11][1]
                 self.weights[13][0] += self.learning_rate * error_piernaIzq * self.X[j][13][0]
@@ -113,7 +113,7 @@ class posenet_learn(object):
                 self.weights[15][0] += self.learning_rate * error_piernaIzq * self.X[j][15][0]
                 self.weights[15][1] += self.learning_rate * error_piernaIzq * self.X[j][15][1]
                 self.weights2[8] += self.learning_rate * error_piernaIzq * self.Bias
-                error_piernaDch = error * self.weights[21] * self.piernaDch * (1 - self.piernaDch)
+                error_piernaDch = error * self.weights2[4] * self.piernaDch * (1 - self.piernaDch)
                 self.weights[12][0] += self.learning_rate * error_piernaDch * self.X[j][12][0]
                 self.weights[12][1] += self.learning_rate * error_piernaDch * self.X[j][12][1]
                 self.weights[14][0] += self.learning_rate * error_piernaDch * self.X[j][14][0]
